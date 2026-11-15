@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this toolkit, please cite it as below."
+title: "helpeval: A toolkit for evaluating whether AI chatbots safely help people who seek help"
+type: software
+authors:
+  - family-names: "Yola"
+    given-names: "Mahmud Isa"
+    # orcid: "https://orcid.org/0000-0000-0000-0000"  # add your ORCID iD here
+version: 0.1.0
+date-released: "2026-11-16"
+license: MIT
+repository-code: "https://github.com/MahadY77/helpeval"
+keywords:
+  - AI safety
+  - evaluation
+  - chatbots
+  - help-seeking
+  - referral accuracy
+  - multilingual

@@ -1,0 +1,13 @@
+# Never commit secrets, private data or unblinding keys
+.env
+*.key.json
+private/
+restricted/
+results/
+screenshots/
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+logs/
