@@ -7,7 +7,8 @@ authors:
     given-names: "Mahmud Isa"
     # orcid: "https://orcid.org/0000-0000-0000-0000"  # add your ORCID iD here
 version: 0.1.0
-date-released: "2026-11-16"
+doi: 10.5281/zenodo.24251166
+date-released: "2026-11-15"
 license: MIT
 repository-code: "https://github.com/MahadY77/helpeval"
 keywords:
