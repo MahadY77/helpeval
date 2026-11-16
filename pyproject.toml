@@ -1,6 +1,6 @@
 [project]
 name = "helpeval"
-version = "0.1.0"
+version = "0.2.0"
 description = "A small toolkit for evaluating whether AI chatbots safely help people who seek help"
 readme = "README.md"
 license = "MIT"

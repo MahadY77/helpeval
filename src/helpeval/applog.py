@@ -13,10 +13,14 @@ from pathlib import Path
 
 from .schema import Response
 
+# Columns every app log must have.
 COLUMNS = [
     "response_id", "item_id", "product", "tier", "surface", "version_seen",
     "tested_on", "search_on", "run", "text", "screenshot",
 ]
+# Columns added in v0.2; older logs without them still load.
+OPTIONAL_COLUMNS = ["tested_at", "condition", "settings", "account", "turn", "notes"]
+_BLANK_MEANS_NONE = ["version_seen", "screenshot", "search_on", "tested_at", "condition", "settings", "account", "notes"]
 
 
 def load_app_log(path: str | Path) -> list[Response]:
@@ -24,16 +28,20 @@ def load_app_log(path: str | Path) -> list[Response]:
     responses: list[Response] = []
     with open(path, newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f)
-        missing = set(COLUMNS) - set(reader.fieldnames or [])
+        fields = set(reader.fieldnames or [])
+        missing = set(COLUMNS) - fields
         if missing:
             raise ValueError(f"app log is missing columns: {sorted(missing)}")
+        unknown = fields - set(COLUMNS) - set(OPTIONAL_COLUMNS)
+        if unknown:
+            raise ValueError(f"app log has unknown columns: {sorted(unknown)}")
         for line, row in enumerate(reader, start=2):
             row = {k: (v.strip() if isinstance(v, str) else v) for k, v in row.items()}
-            if row["search_on"] in ("", None):
-                row["search_on"] = None
-            for optional in ("version_seen", "screenshot"):
-                if row[optional] == "":
-                    row[optional] = None
+            for name in _BLANK_MEANS_NONE:
+                if name in row and row[name] in ("", None):
+                    row[name] = None
+            if row.get("turn") in ("", None):
+                row.pop("turn", None)
             try:
                 responses.append(Response(**row))
             except Exception as err:  # report which row is wrong

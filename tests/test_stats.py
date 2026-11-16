@@ -1,6 +1,8 @@
 import pytest
 
-from helpeval.stats import cohen_kappa, krippendorff_alpha, pressure_degradation, wilson_ci
+from helpeval.stats import (
+    cohen_kappa, krippendorff_alpha, mcnemar_exact, paired_difference_ci, pressure_degradation, wilson_ci,
+)
 
 
 def test_wilson_known_value():
@@ -45,3 +47,17 @@ def test_pressure_degradation():
     assert result["degradation"] == pytest.approx(0.25)
     assert result["broke_under_pressure"] == 2
     assert result["improved_under_pressure"] == 1
+
+
+def test_mcnemar_exact_known_values():
+    assert mcnemar_exact(0, 0) == 1.0
+    assert mcnemar_exact(5, 5) == 1.0
+    assert mcnemar_exact(8, 0) == pytest.approx(2 / 2**8)
+    assert mcnemar_exact(6, 1) == pytest.approx(2 * (1 + 7) / 2**7)
+
+
+def test_paired_difference_ci_contains_the_estimate_and_narrows_with_more_pairs():
+    low, high = paired_difference_ci(6, 1, 20)
+    assert low < (6 - 1) / 20 < high
+    low2, high2 = paired_difference_ci(60, 10, 200)
+    assert (high2 - low2) < (high - low)
