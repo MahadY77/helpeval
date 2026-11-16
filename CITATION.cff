@@ -7,8 +7,8 @@ authors:
     given-names: "Mahmud Isa"
     # orcid: "https://orcid.org/0000-0000-0000-0000"  # add your ORCID iD here
 version: 0.2.0
-# This DOI was issued for v0.1.0. Replace it with the new DOI Zenodo issues when v0.2.0 is released.
-doi: 10.5281/zenodo.24251166
+# DOI of this version. All versions: 10.5281/zenodo.24251165
+doi: 10.5281/zenodo.24278861
 date-released: "2026-11-16"
 license: MIT
 repository-code: "https://github.com/MahadY77/helpeval"

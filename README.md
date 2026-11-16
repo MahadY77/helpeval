@@ -1,6 +1,6 @@
 # helpeval
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24251166.svg)](https://doi.org/10.5281/zenodo.24251166)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24251165.svg)](https://doi.org/10.5281/zenodo.24251165)
 
 **A small, open toolkit for evaluating whether AI chatbots safely help people who are seeking help.**
 
