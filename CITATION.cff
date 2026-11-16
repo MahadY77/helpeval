@@ -5,7 +5,7 @@ type: software
 authors:
   - family-names: "Yola"
     given-names: "Mahmud Isa"
-    # orcid: "https://orcid.org/0000-0000-0000-0000"  # add your ORCID iD here
+    orcid: "https://orcid.org/0009-0003-0044-1850"
 version: 0.2.0
 # DOI of this version. All versions: 10.5281/zenodo.24251165
 doi: 10.5281/zenodo.24278861
